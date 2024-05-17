@@ -16,7 +16,6 @@ Digital Portfolio - это веб-платформа, предназначенн
 
 - **Backend:** Python с использованием фреймворка Django.
 - **Database:** PostgreSQL для хранения данных пользователей, портфолио, комментариев и оценок.
-- **Caching:** Redis для кэширования часто запрашиваемых данных и ускорения работы приложения.
 - **Frontend:** HTML, CSS и JavaScript для разработки интерактивного пользовательского интерфейса.
 
 ## Начало работы
@@ -27,7 +26,6 @@ Digital Portfolio - это веб-платформа, предназначенн
 
 - Python (версия 3.8 или выше)
 - PostgreSQL
-- Redis
 
 ### Установка
 
@@ -49,7 +47,7 @@ cd digital-portfolio
 pip install -r requirements.txt
 ```
 
-4. Настройте базу данных PostgreSQL и Redis в `settings.py`.
+4. Настройте базу данных PostgreSQL в `settings.py`.
 
 5. Примените миграции базы данных:
 
