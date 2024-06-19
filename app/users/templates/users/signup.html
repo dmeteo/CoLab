@@ -50,7 +50,7 @@
                     </div>
     
                     <div class="control-group">
-                        <input type="tel" class="login-field" placeholder="Номер телефона" id="id_phone_number" value="{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %}"
+                        <input type="tel" class="login-field" placeholder="Номер телефона(+7, 8)" id="id_phone_number" value="{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %}"
                         name="phone_number" required>
                         {% if form.phone_number.errors %}
                         <div class="alert alert-danger alert-dismissible fade show">{{form.phone_number.errors}}</div>

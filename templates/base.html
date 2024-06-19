@@ -29,7 +29,7 @@
                 <li class="header-nav-item"><a href="#">Связаться с нами</a></li>
                 {% if user.is_authenticated %}
                     <li class="header-nav-item">
-                        <a href={% url "users:profile" %}>Профиль</a>
+                        <a href={% url "users:profile" username=user.username %}>Профиль</a>
                     </li>
                 {% else %}
                     <li class="header-nav-item">

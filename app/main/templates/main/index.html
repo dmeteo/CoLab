@@ -9,7 +9,7 @@
             {% if user.is_authenticated %}
                 <div class="button-container">
                     <div>
-                        <a href="{% url "users:profile" %}" class="btn btn-login">Профиль</a>
+                        <a href="{% url "users:profile" username=user.username %}" class="btn btn-login">Профиль</a>
                     </div>
                 </div>
             {% else %}

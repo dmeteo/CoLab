@@ -28,6 +28,13 @@ class UserSignUpForm(UserCreationForm):
             "password1",
             "password2",
         )
+
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data['phone_number']
+
+        if not (phone_number.startswith('+79') or phone_number.startswith('89')):
+            raise forms.ValidationError('Неверный номер телефона')
+        return phone_number
     
     username = forms.CharField()
     first_name = forms.CharField()
@@ -50,11 +57,21 @@ class ProfileForm(UserChangeForm):
             "surname",
             "email",
             "phone_number",)
+        
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data['phone_number']
+
+        if not (phone_number.startswith('+79') or phone_number.startswith('89')):
+            raise forms.ValidationError('Неверный номер телефона')
+        return phone_number
 
     image = forms.ImageField(required=False)
     username = forms.CharField()
     first_name = forms.CharField()
     last_name = forms.CharField()
     surname = forms.CharField()
-    email = forms.EmailField()
+    email = forms.CharField()
     phone_number = forms.CharField()
+
+    def get_username(self):
+        return self.username
