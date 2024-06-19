@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-</head>
-<body>
-    <p>{{ content }}</p>
-    {% if is_authentificated %}
-        <p>{{ list.0 }}</p>
-        <p>{{ dict.first }}</p>
-    {% endif %}
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <section class="content">
+        <div class="main-content-container">
+            <h1>Поиск ближайшей свободной автомойки и бронирование на удобное время.</h1>
+            <p>Мы поможем сохранить ваше время для более интересных занятий, чем стоять в очереди.</p>
+            {% if user.is_authenticated %}
+                <div class="button-container">
+                    <div>
+                        <a href="{% url "users:profile" %}" class="btn btn-login">Профиль</a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="button-container">
+                    <div>
+                        <a href="{% url "users:login" %}" class="btn btn-login">Войти</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="main-photo">
+        </div>
+    </section>
+{% endblock %}
