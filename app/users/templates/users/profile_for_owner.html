@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <section class="edit-profile">
-        <form action="{% url "users:profile" %}" method="post">
+        <form action="{% url "users:profile" username=user.username %}" method="post">
             {% csrf_token %}
             <div class="edit-info">
                 <div class="avatar-container">
