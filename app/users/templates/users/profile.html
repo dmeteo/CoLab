@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <section class="profile-cabinet" id="shadow">
+        <div class="profile-cabinet-info">
+            <div class="avatar-container">
+                <img class="avatar" src="img/cat.jpg">
+            </div>
+            {% if user.is_authenticated and user.username == username %}
+                <a class="change-profile" href={% url "users:change-profile" username=user.username %}>Редактировать профиль</a>
+            {% endif %}
+            <ul class="profile-cabinet-info">
+                <li>ФИО: {{ last_name }} {{ first_name }} {{ surname }}</li>
+                <li>ВУЗ: {{ university }}</li>
+                <li>Институт: {{ institute }}</li>
+                <li>Направление: {{ trend }}</li>
+                <li>Курс: {{ course }}</li>
+                <li>О себе: {{ bio }}</li>
+            </ul>
+        </div>
+        <div class="edit-projects">
+            <h2 class="edit-project-h2">Проекты</h2>
+            <ul class="project-items">
+                <li class="project-item">
+                    <h3>Проектный практикум</h3>
+                    <p>Роль: Разработчик</p>
+                    <p>Оценка: &#11088; 5.00</p>
+                    <a class="detail">Подробнее</a>
+                </li>
+                <li class="project-item">
+                    <h3>Проектный практикум</h3>
+                    <p>Роль: Разработчик</p>
+                    <p>Оценка: &#11088; 5.00</p>
+                    <a class="detail">Подробнее</a>
+                </li>
+                <li class="project-item">
+                    <h3>Проектный практикум</h3>
+                    <p>Роль: Разработчик</p>
+                    <p>Оценка: &#11088; 5.00</p>
+                    <a class="detail">Подробнее</a>
+                </li>
+                <li class="project-item">
+                    <h3>Проектный практикум</h3>
+                    <p>Роль: Разработчик</p>
+                    <p>Оценка: &#11088; 5.00</p>
+                    <a class="detail">Подробнее</a>
+                </li>
+                <li class="project-item">
+                    <h3>Проектный практикум</h3>
+                    <p>Роль: Разработчик</p>
+                    <p>Оценка: &#11088; 5.00</p>
+                    <a class="detail">Подробнее</a>
+                </li>
+                <li class="project-item">
+                    <h3>Проектный практикум</h3>
+                    <p>Роль: Разработчик</p>
+                    <p>Оценка: &#11088; 5.00</p>
+                    <a class="detail">Подробнее</a>
+                </li>
+                <li class="project-item">
+                    <h3>Проектный практикум</h3>
+                    <p>Роль: Разработчик</p>
+                    <p>Оценка: &#11088; 5.00</p>
+                    <a class="detail">Подробнее</a>
+                </li>
+                <li class="project-item">
+                    <h3>Проектный практикум</h3>
+                    <p>Роль: Разработчик</p>
+                    <p>Оценка: &#11088; 5.00</p>
+                    <a class="detail">Подробнее</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+{% endblock content %}
