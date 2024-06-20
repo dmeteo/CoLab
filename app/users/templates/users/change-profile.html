@@ -2,21 +2,21 @@
 {% load static %}
 {% block content %}
     <section class="edit-profile">
-        <form action="{% url "users:profile" username=user.username %}" method="post">
+        <form action="{% url "users:change-profile" username=user.username %}" method="post">
             {% csrf_token %}
             <div class="edit-info">
                 <div class="avatar-container">
-                    {% if users.image %}
-                        <img class="avatar" src="{{ users.image.url }}">
+                    {% if user_form.image %}
+                        <img class="avatar" src="{{ user_form.image.url }}">
                     {% else %}
                         <img class="avatar" src="img/cat.jpg">
                     {% endif %}
                     <input type="file" class="form-control mt-3" id="id_image"
                         name='image'
                         accept="image/*">
-                        {% if form.image.errors %}
-                            <div class="alert alert-danger alert-dismissible fade show">{{form.image.errors}}</div>
-                        {% endif %}
+                    {% if user_form.image.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{user_form.image.errors}}</div>
+                    {% endif %}
                 </div>
                 <a class="logout" href={% url "users:logout" %}>Выйти</a>
 
@@ -25,11 +25,11 @@
                         <input type="text" id="id_username"
                         name="username"
                         placeholder="Логин"
-                        value="{{ form.username.value }}"
-                        required
-                        {% if form.username.errors %}
-                            <div class="alert alert-danger alert-dismissible fade show">{{form.username.errors}}</div>
-                        {% endif %}>
+                        value="{{ user_form.username.value }}"
+                        required>
+                        {% if user_form.username.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{user_form.username.errors}}</div>
+                        {% endif %}
                 </div>
 
                 <div class="profile-forms">
@@ -37,11 +37,11 @@
                     <input type="text" id="id_first_name"
                         name="first_name"
                         placeholder="Имя"
-                        value="{{ form.first_name.value }}"
-                        required
-                        {% if form.first_name.errors %}
-                            <div class="alert alert-danger alert-dismissible fade show">{{form.first_name.errors}}</div>
-                        {% endif %}>
+                        value="{{ user_form.first_name.value }}"
+                        required>
+                        {% if user_form.first_name.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{user_form.first_name.errors}}</div>
+                        {% endif %}
                 </div>
 
                 <div class="profile-forms">
@@ -49,11 +49,11 @@
                     <input type="text" id="id_last_name"
                         name="last_name"
                         placeholder="Фамилия"
-                        value="{{ form.last_name.value }}"
-                        required
-                        {% if form.last_name.errors %}
-                            <div class="alert alert-danger alert-dismissible fade show">{{form.last_name.errors}}</div>
-                        {% endif %}>
+                        value="{{ user_form.last_name.value }}"
+                        required>
+                        {% if user_form.last_name.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{user_form.last_name.errors}}</div>
+                        {% endif %}
                 </div>
 
                 <div class="profile-forms">
@@ -61,8 +61,11 @@
                         <input type="text" id="id_surname"
                         name="surname"
                         placeholder="Отчество"
-                        value="{{ form.surname.value }}"
+                        value="{{ user_form.surname.value }}"
                         required>
+                        {% if user_form.surname.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{user_form.surname.errors}}</div>
+                        {% endif %}
                 </div>
 
                 <div class="profile-forms">
@@ -70,8 +73,11 @@
                         <input type="email" id="id_email"
                         name="email"
                         placeholder="Эл.почта"
-                        value="{{ form.email.value }}"
+                        value="{{ user_form.email.value }}"
                         required>
+                        {% if user_form.email.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{user_form.email.errors}}</div>
+                        {% endif %}
                 </div>
 
                 <div class="profile-forms">
@@ -79,13 +85,63 @@
                     <input type="tel" id="id_phone_number"
                     name="phone_number"
                     placeholder="Номер телефона"
-                    value="{{ form.phone_number.value }}"
+                    value="{{ user_form.phone_number.value }}"
                     required>
+                    {% if user_form.phone_number.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{user_form.phone_number.errors}}</div>
+                    {% endif %}
                 </div>
 
-                <div class="profile-button">
-                    <button type="submit" class="btn-login btn-primary btn-large btn-block">Сохранить<button>
+                <div class="profile-forms">
+                    <p>Институт</p>
+                    <input type="text" id="id_institute"
+                    name="institute"
+                    placeholder="Институт"
+                    value="{{ profile_form.institute.value }}"
+                    required>
+                    {% if profile_form.nstitute.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{profile_form.nstitute.errors}}</div>
+                    {% endif %}
                 </div>
+
+                <div class="profile-forms">
+                    <p>Направление</p>
+                    <input type="text" id="id_trend"
+                    name="trend"
+                    placeholder="Направление"
+                    value="{{ profile_form.trend.value }}"
+                    required>
+                    {% if profile_form.trend.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{profile_form.trend.errors}}</div>
+                    {% endif %}
+                </div>
+
+                <div class="profile-forms">
+                    <p>Курс</p>
+                    <input type="text" id="id_course"
+                    name="course"
+                    placeholder="Курс"
+                    value="{{ profile_form.course.value }}"
+                    required>
+                    {% if profile_form.course.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{profile_form.course.errors}}</div>
+                    {% endif %}
+                </div>
+
+                <div class="profile-forms">
+                    <p>О себе</p>
+                    <input type="text" id="id_bio"
+                    name="bio"
+                    placeholder="О себе"
+                    value="{{ profile_form.bio.value }}"
+                    required>
+                    {% if profile_form.bio.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{profile_form.bio.errors}}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="profile-button">
+                <button type="submit" class="btn-login btn-primary btn-large btn-block">Сохранить</button>
             </div>
         </form>
         <div class="edit-projects">

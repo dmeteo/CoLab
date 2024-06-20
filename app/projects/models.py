@@ -19,4 +19,4 @@ class MemberProject(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     role = models.CharField(null=True, blank=True, verbose_name="Роль")
     rate = models.FloatField(default=0, null=True, blank=True, verbose_name='Оценка')
-    text = models.TextField(null=True, blank=True)
+    comment = models.TextField(null=True, blank=True)

@@ -97,12 +97,12 @@ input {
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 0;
+    padding: 15px;
     border-radius: 4px;
     transition: all .2s;
     position: absolute;
     font-size: 16px;
-    padding-left: 100px;
+    text-align: center;
 }
 
 .btn:hover {
@@ -232,7 +232,7 @@ input {
 .avatar-container {
     width: 200px;
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     margin-left: 45px;
 }
 
@@ -375,7 +375,7 @@ input {
 
 .edit-profile {
     display: flex;
-    gap: 60px;
+    gap: 20px;
 }
 
 .edit-info {
@@ -383,7 +383,7 @@ input {
     flex-direction: column;
     margin-left: 135px;
     gap: 15px;   
-    width: 400px;
+    width: 350px;
 }
 
 .edit-profile .avatar-container {
@@ -432,3 +432,28 @@ input {
     font-size: 80px;
 }
 
+
+.profile-cabinet {
+    margin: 0;
+    margin-left: 60px;
+    display: flex;
+    gap: 15px;
+}
+
+
+.profile-cabinet-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;   
+    width: 350px;
+}
+
+.profile-cabinet-info li {
+    list-style: none;
+    margin: 0;
+    font-size: 20px;
+}
+
+.change-profile {
+    margin-left: 40px;
+}

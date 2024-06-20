@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-from app.projects.models import Project
-
 class User(AbstractUser):
     surname = models.CharField(blank=False, null=True, verbose_name='Отчество')
     phone_number = models.CharField(blank=False, null=True, verbose_name='Номер телефона')
@@ -15,3 +13,13 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+    
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    institute = models.CharField(blank=False, null=True, verbose_name='Институт')
+    trend = models.CharField(blank=False, null=True, verbose_name='Направление')
+    course = models.SmallIntegerField(blank=False, null=True, verbose_name='Курс')
+    bio = models.CharField(blank=False, null=True, verbose_name='О себе, кратко')
+
+    def __str__(self):
+        return str(self.user)

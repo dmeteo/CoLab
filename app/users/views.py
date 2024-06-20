@@ -5,10 +5,10 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
+from django.views.generic import DetailView, UpdateView
 
-from app.users.models import User
-from app.users.forms import UserLoginForm, UserSignUpForm, ProfileForm
-
+from app.users.models import User, Profile
+from app.users.forms import UserLoginForm, UserSignUpForm, UserForm, ProfileUpdateForm
 
 def login(request):
     if request.user.is_authenticated: 
@@ -55,26 +55,44 @@ def signup(request):
     
 
 @login_required
-def profile(request, username):
-    user_profile = get_object_or_404(User, username=username)
-    if user_profile.username == request.user.username:
-        if request.method == 'POST':
-            form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
-            if form.is_valid():
-                form.save()
-                messages.success(request, "Профайл успешно обновлен")
-                return HttpResponseRedirect(reverse(f'{request.user.username}'))
-        else:
-            form = ProfileForm(instance=request.user)    
-
-        context = {
-            'title': 'Home - Кабинет',
-            'form': form,
-            'username': username
-        }
-        return render(request, 'users/profile_for_owner.html', context)
+def change_profile(request, username):
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST, instance=request.user, files=request.FILES)
+        profile_form = ProfileUpdateForm(data=request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, "Профайл успешно обновлен")
+            return HttpResponseRedirect(reverse(f'{request.user.username}'))
     else:
-        return render(request, 'users/other_profile.html', {'user_profile': user_profile})
+        user_form = UserForm(instance=request.user)  
+        profile_form = ProfileUpdateForm(instance=request.user)
+
+    context = {
+        'title': 'Home - Кабинет',
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'username': username
+    }
+    return render(request, 'users/change-profile.html', context)   
+
+def view_profile(request, username):
+    user = User.objects.get(username=username)
+    # profile = Profile.objects.get(pk=user.pk)
+
+    context = {
+        'title': 'Home - Кабинет',
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'surname': user.surname,
+        'university': 'УрФУ',
+        # 'institute': profile.institute,
+        # 'trend': profile.trend,
+        # 'course': profile.course,
+        # 'bio': profile.bio,
+        'username': username
+    }
+    return render(request, 'users/profile.html', context)
 
 @login_required
 def logout(request):
