@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <section class="profile-project">
+        <h2 class="profile-project-h2">{{ project.name }}</h2>
+        <div class="profile-project-content">
+            <h3>Команда</h3>
+            <ul class="team">
+                <li><a class=''>...</a>5.00 &#11088;</li>
+            </ul>
+            <p class="ball"><strong>Итоговый балл: </strong>{{ project.rating }}</p>
+            <div class="description">
+                <p>{{ project.about }}</p>
+            </div>
+            <a class="logout" href={% url "projects:edit-project" name=name %}>Изменить карточку</a>
+        </div>
+    </section>
+{% endblock %}

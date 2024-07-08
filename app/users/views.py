@@ -7,8 +7,8 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, UpdateView
 
-from app.users.models import User, Profile
-from app.users.forms import UserLoginForm, UserSignUpForm, UserForm, ProfileUpdateForm
+from app.users.models import User
+from app.users.forms import UserLoginForm, UserSignUpForm, UserForm
 
 def login(request):
     if request.user.is_authenticated: 
@@ -27,7 +27,7 @@ def login(request):
         form = UserLoginForm()
 
     context = {
-        'title': 'Home - Авторизация',
+        'title': 'Авторизация',
         'form': form
     }
     return render(request, 'users/login.html', context)
@@ -48,7 +48,7 @@ def signup(request):
         form = UserSignUpForm()
 
     context = {
-        'title': 'Home - Регистрация',
+        'title': 'Регистрация',
         'form': form
     }
     return render(request, 'users/signup.html', context)
@@ -58,38 +58,34 @@ def signup(request):
 def change_profile(request, username):
     if request.method == 'POST':
         user_form = UserForm(data=request.POST, instance=request.user, files=request.FILES)
-        profile_form = ProfileUpdateForm(data=request.POST, instance=request.user)
         if user_form.is_valid():
             user_form.save()
-            profile_form.save()
             messages.success(request, "Профайл успешно обновлен")
             return HttpResponseRedirect(reverse(f'{request.user.username}'))
     else:
         user_form = UserForm(instance=request.user)  
-        profile_form = ProfileUpdateForm(instance=request.user)
 
     context = {
-        'title': 'Home - Кабинет',
+        'title': 'Редактирование профиля',
         'user_form': user_form,
-        'profile_form': profile_form,
         'username': username
     }
     return render(request, 'users/change-profile.html', context)   
 
 def view_profile(request, username):
     user = User.objects.get(username=username)
-    # profile = Profile.objects.get(pk=user.pk)
 
     context = {
-        'title': 'Home - Кабинет',
+        'image': user.image,
+        'title': 'Профиль пользователя '+username,
         'first_name': user.first_name,
         'last_name': user.last_name,
         'surname': user.surname,
         'university': 'УрФУ',
-        # 'institute': profile.institute,
-        # 'trend': profile.trend,
-        # 'course': profile.course,
-        # 'bio': profile.bio,
+        'institute': user.institute,
+        'trend': user.trend,
+        'course': user.course,
+        'bio': user.bio,
         'username': username
     }
     return render(request, 'users/profile.html', context)

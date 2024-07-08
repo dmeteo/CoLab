@@ -16,32 +16,10 @@ $(document).ready(function(){
 
 });
 
-$( function() {
-  var availableTags = [
-    "ActionScript",
-    "AppleScript",
-    "Asp",
-    "BASIC",
-    "C",
-    "C++",
-    "Clojure",
-    "COBOL",
-    "ColdFusion",
-    "Erlang",
-    "Fortran",
-    "Groovy",
-    "Haskell",
-    "Java",
-    "JavaScript",
-    "Lisp",
-    "Perl",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Scala",
-    "Scheme"
-  ];
-  $( "#tags" ).autocomplete({
-    source: availableTags
-  });
-} );
+var textarea = document.querySelector('textarea');
+
+textarea.addEventListener('keyup', function(){
+	if(this.scrollTop > 0){
+		this.style.height = this.scrollHeight + "px";
+  }
+});

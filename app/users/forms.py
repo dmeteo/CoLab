@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 
-from app.users.models import User, Profile
+from app.users.models import User
 
 
 class UserLoginForm(AuthenticationForm):
@@ -62,20 +62,6 @@ class UserSignUpForm(UserCreationForm):
     phone_number = forms.CharField()
     password1 = forms.CharField()
     password2 = forms.CharField()
-    
-
-class ProfileUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ('institute',
-                  'trend',
-                  'course',
-                  'bio')
-        
-    institute = forms.CharField()
-    trend = forms.CharField()
-    course = forms.CharField()
-    bio = forms.CharField()
 
 
 class UserForm(UserChangeForm):
@@ -88,7 +74,11 @@ class UserForm(UserChangeForm):
             "last_name",
             "surname",
             "email",
-            "phone_number",)
+            "phone_number",
+            'institute',
+            'trend',
+            'course',
+            'bio',)
         
     def clean_phone_number(self):
         phone_number = self.cleaned_data['phone_number']
@@ -123,6 +113,10 @@ class UserForm(UserChangeForm):
     surname = forms.CharField()
     email = forms.CharField()
     phone_number = forms.CharField()
+    instutute = forms.CharField(required=False)
+    trend = forms.CharField(required=False)
+    course = forms.CharField(required=False)
+    bio = forms.CharField(required=False)
 
     def get_username(self):
         return self.username

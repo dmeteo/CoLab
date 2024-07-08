@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <section class="feed">
+        <h1>Топ пользователей</h1>
+        <div class="feed-cards">
+            {% for user in users_list %}
+                <div class="card">
+                    <a class="name" href={% url "users:profile" username=user.username %}>{{user.last_name}} {{user.first_name}} {{user.surname}}</a>
+                    <p>{{user.avg_rate}} &#11088;</p>
+                    <p>Основные роли:</p>
+                    <a href={% url "users:profile" username=user.username %}>подробнее</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}

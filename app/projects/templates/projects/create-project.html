@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <section class="profile-form">
+        <form action="{% url "projects:create-project"  %}" method="post">
+            {% csrf_token %}
+            {{form}}
+            {% comment %} <div class="profile-project-content">
+                <h3>Команда</h3>
+                <ul class="team">
+                    <div class="profile-forms">
+                        <p>Название</p>
+                        <input type="text" id="id_name" placeholder="Название" value="{% if form.name.value %}{{ form.name.value }}{% endif %}">
+                    </div>
+                    <div class="profile-forms">
+                        <p>ФИО участника: </p>
+                        <input type="text" id="userNameField" placeholder="Добавление участника">
+                    </div>
+                    <div class="profile-forms">
+                        <p>Итоговый балл: </p>
+                        <input type="text" id="id_rating" placeholder="Введите число" value="{% if form.rating.value %}{{ form.rating.value }}{% endif %}">
+                    </div>
+                    <div class="profile-forms">
+                        <p>Описание проекта: </p>
+                        <textarea class="description" value="{% if form.about.value %}{{ form.about.value }}{% endif %}"></textarea>
+                    </div>
+                </ul>
+            </div> {% endcomment %}
+            <button type="submit" class="btn-login btn-primary btn-large btn-block">Создать проект</button>
+        </form>
+    </section>
+{% endblock %}
