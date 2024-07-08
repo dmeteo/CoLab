@@ -24,8 +24,8 @@
         <nav class="header-nav">
             <a class="logo" href={% url "main:index" %}>colab</a>
             <ul class="header-nav-items">
-                <li class="header-nav-item"><a href="#">Лента</a></li>
-                <li class="header-nav-item"><a href="#">О нас</a></li>
+                <li class="header-nav-item"><a href={% url "main:feed" %}>Лента</a></li>
+                <li class="header-nav-item"><a href={% url "main:feed-projects" %}>Проекты</a></li>
                 <li class="header-nav-item"><a href="#">Связаться с нами</a></li>
                 {% if user.is_authenticated %}
                     <li class="header-nav-item">
@@ -38,7 +38,9 @@
                 {% endif %}
             </ul>
             <div class="search">
-                <input id="tags" placeholder="Поиск">
+                <form>
+                    <input id="tags" placeholder="Поиск">
+                </form>
             </div>
         </nav>
     </header>

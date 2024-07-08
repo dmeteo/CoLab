@@ -115,7 +115,6 @@ input {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-
 .btn-login {
     background-color: #446DF6;
     color: black;
@@ -203,6 +202,13 @@ input {
     height: 600px;
 }
 
+.select_wrp {
+    font-size:14px;
+	padding: 15px 20px;
+	width: 300px;
+	margin: 0 auto;
+}
+
 
 
 .profile {
@@ -232,7 +238,7 @@ input {
 .avatar-container {
     width: 200px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-left: 45px;
 }
 
@@ -270,7 +276,7 @@ input {
     margin-bottom: 50px;
 }
 
-.project-items {
+.project-card-items {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
@@ -279,7 +285,7 @@ input {
     padding: 0;
 }
 
-.project-item {
+.project-card-item {
     box-sizing: border-box;
     width: 270px;
     padding: 5px 20px;
@@ -288,7 +294,7 @@ input {
     background-color: #b1b1bd48;
 }
 
-.project-item h3 {
+.project-card-item h3 {
     text-align: center;
 }
 
@@ -303,7 +309,8 @@ input {
     }
     .login {
         margin: 20px auto;
-        margin-bottom: 100px;
+        margin-bottom:200px;
+        
         width: 300px;
     }
     .login-screen {
@@ -366,7 +373,6 @@ input {
         color: #444;
         display: block;
         margin-top: 12px;
-        margin-left:200px;
     }
 
 
@@ -375,7 +381,7 @@ input {
 
 .edit-profile {
     display: flex;
-    gap: 20px;
+    gap: 60px;
 }
 
 .edit-info {
@@ -383,7 +389,7 @@ input {
     flex-direction: column;
     margin-left: 135px;
     gap: 15px;   
-    width: 350px;
+    width: 400px;
 }
 
 .edit-profile .avatar-container {
@@ -402,11 +408,6 @@ input {
 
 .profile-forms div:last-of-type {
     margin-bottom: 70px;
-}
-
-.profile-button {
-    display: flex;
-    box-sizing: border-box;
 }
 
 .profile-button a {
@@ -433,18 +434,19 @@ input {
 }
 
 
+
 .profile-cabinet {
     margin: 0;
     margin-left: 60px;
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 
 .profile-cabinet-info {
     display: flex;
     flex-direction: column;
-    gap: 10px;   
+    gap: 15px;   
     width: 350px;
 }
 
@@ -456,4 +458,115 @@ input {
 
 .change-profile {
     margin-left: 40px;
+}
+
+
+.profile-project {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin: 0;
+    font-size: 20px;
+}
+
+.profile-project-h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 30px;
+}
+
+.profile-project-content {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    margin-left: 300px;
+}
+
+.team {
+    padding: 0;
+    list-style: none;
+}
+
+.team li {
+    margin-bottom: 3px;
+}
+
+.team li:last-child() {
+    margin-bottom: 0;
+}
+
+.profile-project-content h3 {
+    margin: 0;
+    margin-bottom: -5px;
+    padding: 0;
+}
+
+.description {
+    letter-spacing: 2px;
+    line-height: 30px;
+    word-wrap: break-word;
+}
+
+textarea.description {
+    background-color: #ECF0F1;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 10px 20px;
+    width: 100%;
+    height: 100%;
+    transition: border .5s;
+    resize: none;
+}
+
+.rate {
+    width: 5%;
+}
+
+.rate-person {
+    display: flex;
+}
+
+.rate-person button {
+    position: absolute;
+}
+
+.feed h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.feed-cards {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0;
+    margin-left: 300px;
+    font-size: 25px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ECF0F1;
+    gap: 10px;
+    box-sizing: border-box;
+    width: 90%;
+    padding: 5px 40px;
+    padding-bottom: 30px;
+    border-radius: 20px;
+}
+
+.card p {
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.card .name {
+    margin-top: 20px;
+    color: black;
+    text-decoration: underline;
 }

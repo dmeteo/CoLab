@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <section class="profile-project">
+        <form action="{% url "projects:edit-project" slug=slug  %}" method="post">
+            <div class="profile-project-content">
+                <h3>Команда</h3>
+                <ul class="team">
+                    <div class="profile-forms">
+                        <p>Название</p>
+                        <input type="text" id="id_name" placeholder="Название" value="{{ project.name.value }}">
+                    </div>
+                    <div class="profile-forms">
+                        <p>ФИО участника</p>
+                        <input type="text" id="userNameField" placeholder="Добавление участника">
+                    </div>
+                    <div class="profile-forms">
+                        <p>Итоговый балл: </p>
+                        <input type="text" id="id_rating" placeholder="Введите число" value="{{ project.rating.value }}">
+                    </div>
+                    <div class="profile-forms">
+                        <p>Описание проекта</p>
+                        <textarea class="description" value="{{ project.about.value }}"></textarea>
+                    </div>
+                </ul>
+                <button type="submit" class="btn-login btn-primary btn-large btn-block">Сохранить</button>
+            </div>
+        </form>
+    </section>
+{% endblock %}

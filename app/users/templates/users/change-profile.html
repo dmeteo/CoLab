@@ -2,14 +2,14 @@
 {% load static %}
 {% block content %}
     <section class="edit-profile">
-        <form action="{% url "users:change-profile" username=user.username %}" method="post">
+        <form action="{% url "users:change-profile" username=user.username  %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="edit-info">
                 <div class="avatar-container">
                     {% if user_form.image %}
                         <img class="avatar" src="{{ user_form.image.url }}">
                     {% else %}
-                        <img class="avatar" src="img/cat.jpg">
+                        <img class="avatar" src={% static "img/cat.jpg" %}>
                     {% endif %}
                     <input type="file" class="form-control mt-3" id="id_image"
                         name='image'
@@ -22,14 +22,14 @@
 
                 <div class="profile-forms">
                     <p>Логин</p>
-                        <input type="text" id="id_username"
-                        name="username"
-                        placeholder="Логин"
-                        value="{{ user_form.username.value }}"
-                        required>
-                        {% if user_form.username.errors %}
-                            <div class="alert alert-danger alert-dismissible fade show">{{user_form.username.errors}}</div>
-                        {% endif %}
+                    <input type="text" id="id_username"
+                    name="username"
+                    placeholder="Логин"
+                    value="{{ user_form.username.value }}"
+                    required>
+                    {% if user_form.username.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{user_form.username.errors}}</div>
+                    {% endif %}
                 </div>
 
                 <div class="profile-forms">
@@ -97,10 +97,9 @@
                     <input type="text" id="id_institute"
                     name="institute"
                     placeholder="Институт"
-                    value="{{ profile_form.institute.value }}"
-                    required>
-                    {% if profile_form.nstitute.errors %}
-                        <div class="alert alert-danger alert-dismissible fade show">{{profile_form.nstitute.errors}}</div>
+                    value="{{ user_form.institute.value }}">
+                    {% if user_form.nstitute.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{user_form.nstitute.errors}}</div>
                     {% endif %}
                 </div>
 
@@ -109,10 +108,9 @@
                     <input type="text" id="id_trend"
                     name="trend"
                     placeholder="Направление"
-                    value="{{ profile_form.trend.value }}"
-                    required>
-                    {% if profile_form.trend.errors %}
-                        <div class="alert alert-danger alert-dismissible fade show">{{profile_form.trend.errors}}</div>
+                    value="{{ user_form.trend.value }}">
+                    {% if user_form.trend.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{user_form.trend.errors}}</div>
                     {% endif %}
                 </div>
 
@@ -121,10 +119,9 @@
                     <input type="text" id="id_course"
                     name="course"
                     placeholder="Курс"
-                    value="{{ profile_form.course.value }}"
-                    required>
-                    {% if profile_form.course.errors %}
-                        <div class="alert alert-danger alert-dismissible fade show">{{profile_form.course.errors}}</div>
+                    value="{{ user_form.course.value }}">
+                    {% if user_form.course.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{user_form.course.errors}}</div>
                     {% endif %}
                 </div>
 
@@ -133,10 +130,9 @@
                     <input type="text" id="id_bio"
                     name="bio"
                     placeholder="О себе"
-                    value="{{ profile_form.bio.value }}"
-                    required>
-                    {% if profile_form.bio.errors %}
-                        <div class="alert alert-danger alert-dismissible fade show">{{profile_form.bio.errors}}</div>
+                    value="{{ user_form.bio.value }}">
+                    {% if user_form.bio.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{user_form.bio.errors}}</div>
                     {% endif %}
                 </div>
             </div>
@@ -146,58 +142,10 @@
         </form>
         <div class="edit-projects">
             <h2 class="edit-project-h2">Проекты</h2>
-            <ul class="project-items">
-                <li class="project-item">
+            <ul class="project-card-items">
+                <li class="project-card-item">
                     <h3>Добавить проект</h3>
                     <a class="plus">+</a>
-                </li>
-                <li class="project-item">
-                    <h3>Проектный практикум</h3>
-                    <p>Роль: Разработчик</p>
-                    <p>Оценка: &#11088; 5.00</p>
-                    <a class="detail">Подробнее</a>
-                </li>
-                <li class="project-item">
-                    <h3>Проектный практикум</h3>
-                    <p>Роль: Разработчик</p>
-                    <p>Оценка: &#11088; 5.00</p>
-                    <a class="detail">Подробнее</a>
-                </li>
-                <li class="project-item">
-                    <h3>Проектный практикум</h3>
-                    <p>Роль: Разработчик</p>
-                    <p>Оценка: &#11088; 5.00</p>
-                    <a class="detail">Подробнее</a>
-                </li>
-                <li class="project-item">
-                    <h3>Проектный практикум</h3>
-                    <p>Роль: Разработчик</p>
-                    <p>Оценка: &#11088; 5.00</p>
-                    <a class="detail">Подробнее</a>
-                </li>
-                <li class="project-item">
-                    <h3>Проектный практикум</h3>
-                    <p>Роль: Разработчик</p>
-                    <p>Оценка: &#11088; 5.00</p>
-                    <a class="detail">Подробнее</a>
-                </li>
-                <li class="project-item">
-                    <h3>Проектный практикум</h3>
-                    <p>Роль: Разработчик</p>
-                    <p>Оценка: &#11088; 5.00</p>
-                    <a class="detail">Подробнее</a>
-                </li>
-                <li class="project-item">
-                    <h3>Проектный практикум</h3>
-                    <p>Роль: Разработчик</p>
-                    <p>Оценка: &#11088; 5.00</p>
-                    <a class="detail">Подробнее</a>
-                </li>
-                <li class="project-item">
-                    <h3>Проектный практикум</h3>
-                    <p>Роль: Разработчик</p>
-                    <p>Оценка: &#11088; 5.00</p>
-                    <a class="detail">Подробнее</a>
                 </li>
             </ul>
         </div>

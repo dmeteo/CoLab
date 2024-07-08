@@ -4,12 +4,12 @@
 {% block content %}
     <section class="content">
         <div class="main-content-container">
-            <h1>Поиск ближайшей свободной автомойки и бронирование на удобное время.</h1>
-            <p>Мы поможем сохранить ваше время для более интересных занятий, чем стоять в очереди.</p>
+            <h1>Создавай проекты и получай обратную связь!</h1>
+            <p>Добро пожаловать в CoLab — уникальную платформу для организации, публикации и оценки студенческих проектов</p>
             {% if user.is_authenticated %}
                 <div class="button-container">
                     <div>
-                        <a href="{% url "users:profile" username=user.username %}" class="btn btn-login">Профиль</a>
+                        <a href="{% url "projects:create-project" %}" class="btn btn-login">Создать проект</a>
                     </div>
                 </div>
             {% else %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <section class="feed">
+        <h1>Топ пользователей</h1>
+        <div class="feed-cards">
+            {% for project in projects_list %}
+                <div class="card">
+                    <a class="name" href={% url "projects:project" name=project.name %}>{{project.name}}</a>
+                    <p>Балл: {{project.rating}}</p>
+                    <p>Участники: </p>
+                    <p>...</p>
+                    <p>...</p>
+                    <a href={% url "projects:project" name=project.name %}>подробнее</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}
